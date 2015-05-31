@@ -38,5 +38,21 @@ Rules for type checking and comparisons
 
 ## References and Further Reading
 
-List of references and recommended further reading
+The following lists of links were useful and borrowed from extensively in creating this style guide.
+
+### Style Guide References
+
+* [Idiomatic Style Guide](http://github.com/rwaldron/idiomatic.js)
+* [Node Style Guide](http://github.com/felixge/node-style-guide)
+* [Airbnb Style Guide](http://github.com/airbnb/javascript/tree/master/es5)
+* [Crockford Style Guide](http://javascript.crockford.com/code.html)
+* [JQuery Style Guide](http://contribute.jquery.org/style-guide/js/)
+
+### Recommended further reading
+
+* [ECMAScript 5.1](http://es5.github.com/)
+* [Eloquent Javascript](http://eloquentjavascript.net/)
+* [Adventures in Javascript Development](http://rmurphey.com/)
+* [Perfection Kills](http://perfectionkills.com/)
+* [Douglas Crockford](http://javascript.crockford.com/)
 
