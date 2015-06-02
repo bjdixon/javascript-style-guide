@@ -16,6 +16,36 @@ Introduction, what this is and why it exists.
 
 Rules for whitespace, indentation, blocks, quotes and comments
 
+### Whitespace
+
+* Use spaces not tabs
+* Eliminate end of line whitespace
+* Eliminate empty line whitespace
+* A maximum of 1 blank line separates code blocks
+* Do not insert a blank line between a comment and the code block that it describes
+* Precede a curly brace with a space
+* Commas should be followed by a space or new line
+* Don't add space following opening parentheses or preceding closing parentheses
+* Add a single space following opening curly braces and preceding closing curly braces unless curly braces are empty
+* Add a single space following the semicolons in the conditions of a for loop
+* Add a single space after the keyword "function"
+* Separate operators and operands with a whitespace
+
+### Indentation
+
+* All Javascript code is indented by 2 spaces (tabs should be set in your editor to expand to 2 spaces)
+* Code blocks should be indented (always indent code within curly braces)
+* Indent function chaining and multiple variable declarations
+
+### Beautiful Syntax
+
+* Never use one line if/else/for/white/try/function statements
+* Always use braces with if/else/for/white/try statements
+* Use whitespace to promote readability 
+* Use single quotes except for JSON
+* Maximum of 100 characters per line
+* Use slashes for comments, including multiline comments
+
 ## Variables
 
 Rules for variables
