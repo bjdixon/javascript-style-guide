@@ -28,7 +28,7 @@ Rules for whitespace, indentation, blocks, quotes and comments
 * Don't add space following opening parentheses or preceding closing parentheses
 * Add a single space following opening curly braces and preceding closing curly braces unless curly braces are empty
 * Add a single space following the semicolons in the conditions of a for loop
-* Add a single space after the keyword "function"
+* Add a single space after the keyword ``` function ```
 * Separate operators and operands with a whitespace
 
 ### Indentation
@@ -48,7 +48,14 @@ Rules for whitespace, indentation, blocks, quotes and comments
 
 ## Variables
 
-Rules for variables
+* Use lowerCamelCase for variables, attributes and function names
+* Use UpperCamelCase for constructor functions
+* Use UPPERCASE for constants
+* Underscores don't belong in variable names except for ``` _this ```
+* Use 1 ``` var ``` keyword per scope and 1 declaration per line
+* Unassigned variables follow assignments
+* Hoist your variable declarations manually
+* When storing a reference to 'this' (to be used in a child scope) the convention is to store it as ``` _this ```
 
 ## Objects
 
