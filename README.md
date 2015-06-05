@@ -48,6 +48,8 @@ Rules for whitespace, indentation, blocks, quotes and comments
 
 ## Variables
 
+Rules for naming and how to declare variables
+
 * Use lowerCamelCase for variables, attributes and function names
 * Use UpperCamelCase for constructor functions
 * Use UPPERCASE for constants
@@ -59,7 +61,23 @@ Rules for whitespace, indentation, blocks, quotes and comments
 
 ## Objects
 
-Rules for objects
+Rules for creating and using objects
+
+### Object Creation
+
+* Use object literal syntax for creating objects not the constructor
+* Use one line per property when creating objects
+* Objects that are created with only one property may be created on one line
+
+### Keys
+
+* Don't use reserved keywords as keys
+* Use readable synonyms in place of reserved words, not alternative spellings of reserved words
+
+### Accessing properties
+
+* Use dot notation when accessing properties
+* Use subscript notation only when accessing properties using a variable 
 
 ## Arrays
 
