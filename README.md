@@ -81,7 +81,12 @@ Rules for creating and using objects
 
 ## Arrays
 
-Rules for arrays
+Rules for creating and using arrays
+
+* Use array literal syntax for creating arrays not the constructor
+* Use ``` array.push ``` to add items to an array instead of direct assignment
+* Use ``` array.slice ``` to copy an array
+* Use ``` Array.prototype.slice ``` to convert an array-like object to an array
 
 ## Functions
 
