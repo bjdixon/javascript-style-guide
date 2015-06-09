@@ -74,7 +74,7 @@ Rules for creating and using objects
 * Don't use reserved keywords as keys
 * Use readable synonyms in place of reserved words, not alternative spellings of reserved words
 
-### Accessing properties
+### Accessing Properties
 
 * Use dot notation when accessing properties
 * Use subscript notation only when accessing properties using a variable 
@@ -90,7 +90,46 @@ Rules for creating and using arrays
 
 ## Functions
 
-Rules for functions
+Rules for declaring and invoking functions
+
+### Function Declarations
+
+* Always add a space after the ``` function ``` keyword
+* Never declare a function in a non-function block (if, while, etc)
+
+### Function Expressions
+
+* Hoist declarations with other ``` var ``` declarations, but don't assign until after the other variables are declared
+* Assigning the function to the variable at the site of first usage is prefered
+* Providing an identifier is prefered as it allows for recursion and better stack traces
+* Never declare a function in a non-function block. Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently
+
+### Constructor Functions
+
+* Provide padding inside the braces when providing a configuration object during instantiation
+
+### Parameters and Arguments
+
+* Never add padding inside parentheses
+* Always add a space after the comma following a parameter or argument
+* Never name a parameter arguments. This will take precedence over the arguments object that is given to every function scope
+
+### Write Small Functions
+
+* Keep your functions short. A good function fits on a slide that people in the last row of a big room can comfortably read
+* Prefer functions that are less than 25 lines of code
+* Write functions that only perform one task
+
+### Return Early From Functions
+
+* Avoid deep nesting of ``` if ``` statements
+* Always return a function's value as early as possible
+
+### Closures
+
+* Don't use closures if you can use an inner function without a closure. They're slower and more prone to memory leaks
+* Name your closures for better stack traces
+* Never nest closures. It's messy
 
 ## Type Checking and Comparisons
 
