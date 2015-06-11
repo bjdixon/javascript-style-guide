@@ -133,7 +133,20 @@ Rules for declaring and invoking functions
 
 ## Type Checking and Comparisons
 
-Rules for type checking and comparisons
+Rules for comparisons and conditional evaluation
+
+### Comparison Operators and Equality
+
+* Prefer ``` === ``` and ``` !== ``` over ``` == ``` and ``` != ```
+
+Conditional statements evaluate their expression using coercion and always follow these rules:
+
+* Objects evaluate to true
+* Undefined evaluates to false
+* Null evaluates to false
+* Booleans evaluate to the value of the boolean
+* Numbers evaluate to false if +0, -0, or NaN, otherwise true
+* Strings evaluate to false if an empty string, otherwise true
 
 ## References and Further Reading
 
