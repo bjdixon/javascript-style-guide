@@ -137,7 +137,7 @@ Rules for comparisons and conditional evaluation
 
 ### Comparison Operators and Equality
 
-* Prefer ``` === ``` and ``` !== ``` over ``` == ``` and ``` != ```
+**Prefer** ``` === ``` and ``` !== ``` **over** ``` == ``` and ``` != ```
 
 Conditional statements evaluate their expression using coercion and always follow these rules:
 
@@ -147,6 +147,104 @@ Conditional statements evaluate their expression using coercion and always follo
 * Booleans evaluate to the value of the boolean
 * Numbers evaluate to false if +0, -0, or NaN, otherwise true
 * Strings evaluate to false if an empty string, otherwise true
+* Arrays are objects and so evaluate as true
+
+```
+if ([0]) {
+  // Arrays are objects and so evaluate as true
+}
+```
+
+### Conditional Evaluation
+
+**Strings**
+
+```
+// Do this when checking a string isn't empty
+if (name) {
+  // statements
+}
+
+// Don't do this
+if (name !== '') {
+  // statements
+}
+
+// Do this when checking a string is empty
+if (!name) {
+  // statements
+}
+
+// Don't do this
+if (name === '') {
+  // statements
+}
+```
+
+**Collections**
+
+```
+// Do this when evaluating that an array has length
+if (collection.length) {
+  // statements
+}
+
+// Don't do this
+if (collection.length > 0) {
+  // statements
+}
+
+// Do this when evaluating that an array is empty
+if (!collections.length) {
+  // statements
+}
+
+// Don't do this
+if (collection.length === 0) {
+  // statements
+}
+```
+
+**References**
+
+```
+// Do this when evaluating if a reference is false
+if (!foo) {
+  // statements
+}
+
+// Don't do this
+if (foo === false) {
+  // statements
+}
+
+// If checking a boolean is false as opposed to 0, undefined, NaN, '', or null
+if (foo === false) {
+  // statements
+}
+
+// When evaluating for null or undefined do this
+if (foo == null) {
+  // statements
+}
+
+// Don't do this (it's the same as above)
+if (foo === null || foo === undefined) {
+  // statements
+}
+```
+
+### Checking for Types
+
+* String ``` typeof foo === 'string' ```
+* Number ``` typeof foo === 'number' ```
+* Boolean ``` typeof foo === 'boolean' ```
+* Object ``` typeof foo === 'object' ```
+* Null ``` typeof foo === null ```
+* Global undefined ``` typeof foo === 'undefined' ```
+* Local undefined ``` typeof foo === undefined ```
+* Null or undefined ``` typeof foo == null ```
+* Array ``` Array.isArray(foo) ```
 
 ## References and Further Reading
 
