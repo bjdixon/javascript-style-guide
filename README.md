@@ -83,10 +83,50 @@ Rules for creating and using objects
 
 Rules for creating and using arrays
 
-* Use array literal syntax for creating arrays not the constructor
-* Use ``` array.push ``` to add items to an array instead of direct assignment
-* Use ``` array.slice ``` to copy an array
-* Use ``` Array.prototype.slice ``` to convert an array-like object to an array
+Use array literal syntax for creating arrays not the constructor
+
+```
+// Do this
+var collection = [];
+
+// Don't do this
+var collection = new Array();
+```
+
+Use ``` array.push ``` to add items to an array instead of direct assignment
+
+```
+var collection = [];
+
+// Do this
+collection.push('value');
+
+// Don't do this
+collection[collection.length] = 'value';
+```
+
+Use ``` array.slice ``` to copy an array
+
+```
+var copyOfCollection = [],
+  index;
+
+// Do this
+copyOfCollection = collection.slice();
+
+// Don't do this
+for (index = 0; index < collection.length; index += 1) {
+  copyOfCollection[index] = collection[index];
+}
+```
+
+Use ``` Array.prototype.slice ``` to convert an array-like object to an array
+
+```
+function f() {
+  var args = Array.prototype.slice.call(arguments);
+}
+```
 
 ## Functions
 
