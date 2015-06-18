@@ -87,19 +87,98 @@ Rules for creating and using objects
 
 ### Object Creation
 
-* Use object literal syntax for creating objects not the constructor
-* Use one line per property when creating objects
-* Objects that are created with only one property may be created on one line
+Use object literal syntax for creating objects not the constructor
+
+```
+// Do this
+var item = {};
+
+// Don't do this
+var item = new Object();
+```
+
+Use one line per property when creating objects
+
+```
+// Do this
+var item = {
+  propertyOne: 'value',
+  propertyTwo: true
+};
+
+// Don't do this
+var item = { propertyOne: 'value', propertyTwo: true };
+```
+
+Objects that are created with only one property may be created on one line
+
+```
+// This is okay
+var item = { propertyOne: 'value' };
+```
 
 ### Keys
 
-* Don't use reserved keywords as keys
-* Use readable synonyms in place of reserved words, not alternative spellings of reserved words
+Don't use reserved keywords as keys
+
+```
+// Don't do this
+var item = {
+  default: { foo: 'value' },
+  private: true
+};
+
+// Do this
+var item = {
+  auto: { foo: 'value' },
+  hidden: true
+};
+```
+
+Use readable synonyms in place of reserved words, not alternative spellings of reserved words
+
+```
+// Don't do this
+var item = { class: 'category' };
+
+// Don't do this either
+var item = { klass: 'category' };
+
+// Do this instead
+var item = { type: 'category' };
+```
 
 ### Accessing Properties
 
-* Use dot notation when accessing properties
-* Use subscript notation only when accessing properties using a variable 
+Use dot notation when accessing properties
+
+```
+var item = {
+  foo: 'bar',
+  hidden: true
+};
+
+// Do this
+var foo = item.foo;
+
+// Don't do this
+var isHidden = item.['hidden'];
+```
+
+Use subscript notation only when accessing properties using a variable 
+```
+var item = {
+  foo: 'bar',
+  hidden: true
+};
+
+function getProperty(property) {
+  return item[property];
+}
+
+var foo = getProperty('foo'),
+  isHidden = getProperty('hidden');
+```
 
 ## Arrays
 
