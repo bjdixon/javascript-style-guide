@@ -42,8 +42,8 @@ Rules for whitespace, indentation, blocks, quotes and comments
 * Never use one line if/else/for/white/try/function statements
 * Always use braces with if/else/for/white/try statements
 * Use whitespace to promote readability 
-* Use single quotes except for JSON
-* Maximum of 100 characters per line
+* Always use single quotes except for JSON
+* Never exceed a maximum of 100 characters per line
 * Use slashes for comments, including multiline comments
 
 ## Variables
@@ -55,8 +55,30 @@ Rules for naming and how to declare variables
 * Use UPPERCASE for constants
 * Underscores don't belong in variable names except for ``` _this ```
 * Use 1 ``` var ``` keyword per scope and 1 declaration per line
+  ```
+  var foo = 'bar',
+    num = 1;
+  ```
 * Unassigned variables follow assignments
+  ```
+  var foo = 'bar',
+    num = '1',
+    undef;
+  ```
 * Hoist your variable declarations manually
+  ```
+  // Do this
+  function good() {
+    var bar;
+    // statements
+  }
+
+  // Don't do this
+  function bad() {
+    // statements
+    var bar;
+  }
+  ```
 * When storing a reference to 'this' (to be used in a child scope) the convention is to store it as ``` _this ```
 
 ## Objects
