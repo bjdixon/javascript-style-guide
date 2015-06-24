@@ -237,21 +237,96 @@ Rules for declaring and invoking functions
 
 * Always add a space after the ``` function ``` keyword
 * Never declare a function in a non-function block (if, while, etc)
+  ```
+  // Don't do this
+  if (somethingTrue) {
+    function logTrue() {
+      console.log(true);
+    }
+    logTrue();
+  }
+  ```
 
 ### Function Expressions
 
 * Hoist declarations with other ``` var ``` declarations, but don't assign until after the other variables are declared
+  ```
+  var foo = 'bar',
+    baz = true,
+    multiply;
+
+  multiply = function multiply(a, b) {
+    return a * b;
+  };
+  ```
 * Assigning the function to the variable at the site of first usage is prefered
 * Providing an identifier is prefered as it allows for recursion and better stack traces
+  ```
+  // Prefer this
+  var square = function square(number) {
+    return number * number;
+  };
+
+  // Over this
+  var anonymous = function () {
+    return true;
+  };
+  ```
 * Never declare a function in a non-function block. Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently
+  ```
+  // Don't do this
+  if (somethingTrue) {
+    function goTrue() {
+      console.log(true);
+    }
+  }
+
+  // Do this if you have to
+  var goTrue;
+  if (somethingTrue) {
+    goTrue = function goTrue() {
+      console.log(true);
+    };
+  }
+  ```
 
 ### Constructor Functions
 
 * Provide padding inside the braces when providing a configuration object during instantiation
+  ```
+  // Declaration
+  function FooBar(options) {
+    this.options = options;
+  }
+
+  // Usage
+  var fooBar = new FooBar({ a: 'alpha' });
+
+  // Usage with configuration object that has multiple properties
+  var fooBar = new FooBar({
+    a: 'alpha',
+    b: 'beta'
+  });
+  ```
 
 ### Parameters and Arguments
 
 * Never add padding inside parentheses
+  ```
+  // Do this
+  function foo(paramOne, paramTwo) {
+    // statements
+  }
+  
+  foo(1, 2);
+
+  // Don't do this
+  function bar( paramOne, paramTwo ) {
+    // statements
+  }
+
+  foo( 1, 2 );
+  ```
 * Always add a space after the comma following a parameter or argument
 * Never name a parameter arguments. This will take precedence over the arguments object that is given to every function scope
 
@@ -259,18 +334,99 @@ Rules for declaring and invoking functions
 
 * Keep your functions short. A good function fits on a slide that people in the last row of a big room can comfortably read
 * Prefer functions that are less than 25 lines of code
-* Write functions that only perform one task
+* Write functions that perform a single task
 
 ### Return Early From Functions
 
 * Avoid deep nesting of ``` if ``` statements
 * Always return a function's value as early as possible
 
+```
+// This is fine
+function isPercentage(val) {
+  if (val < 0) {
+    return false;
+  }
+  if (val > 100) {
+    return false;
+  }
+  return true;
+}
+ 
+// This is bad
+function isPercentage(val) {
+  if (val >= 0) {
+    if (val <= 100) {
+      return true;
+    } else {
+      return false;
+    } 
+  } else {
+    return false;
+  }
+}
+```
+
 ### Closures
 
 * Don't use closures if you can use an inner function without a closure. They're slower and more prone to memory leaks
+  ```
+  function setupAlertTimeout() {
+    var msg = 'Message to alert';
+    window.setTimeout(function alertMsg() { 
+      alert(msg); 
+    }, 100);
+  }
+
+  // is slower than
+
+  function setupAlertTimeout() {
+    window.setTimeout(function alertMsg() {
+      var msg = 'Message to alert';
+      alert(msg);
+    }, 100);
+  }
+
+  // which is slower than
+
+  function alertMsg() {
+    var msg = 'Message to alert';
+    alert(msg);
+  }
+  function setupAlertTimeout() {
+    window.setTimeout(alertMsg, 100);
+  }
+  ```
 * Name your closures for better stack traces
+  ```
+  // Prefer this
+  req.on('end', function onEnd() {
+    console.log('good');
+  });
+ 
+  // Over this
+  req.on('end', function () {
+    console.log('bad');
+  });
+  ```
 * Never nest closures. It's messy
+  ```
+  // Do this
+  setTimeout(function connect() {
+    client.connect(afterConnect);
+  }, 1000);
+ 
+  function afterConnect() {
+    console.log('good');
+  }
+ 
+  // Don't do this
+  setTimeout(function connect() {
+    client.connect(function afterConnect() {
+      console.log('bad');
+    });
+  }, 1000);
+  ```
 
 ## Type Checking and Comparisons
 
