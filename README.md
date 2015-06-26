@@ -1,10 +1,10 @@
 # JavaScript Style Guide
 
-Introduction, what this is and why it exists.
+One small step towards clean code is the use of a style guide. Almost any style guide will do as long as the whole team uses it. The goal being that all code in the teams repo looks like it was written by a single person. Consistency is key.
 
 ## Contents
 
-* [Formatting](#Formatting)
+* [Formatting](#formatting)
 * [Variables](#variables)
 * [Objects](#objects)
 * [Arrays](#arrays)
