@@ -55,11 +55,13 @@ Rules for naming and how to declare variables
 * Use UPPERCASE for constants
 * Underscores don't belong in variable names except for ``` _this ```
 * Use 1 ``` var ``` keyword per scope and 1 declaration per line
+
   ```javascript
   var foo = 'bar',
     num = 1;
   ```
 * Unassigned variables follow assignments
+
   ```javascript
   var foo = 'bar',
     num = '1',
@@ -107,6 +109,7 @@ Rules for creating and using objects
   var item = { propertyOne: 'value', propertyTwo: true };
   ```
 * Objects that are created with only one property may be created on one line
+
   ```javascript
   // This is okay
   var item = { propertyOne: 'value' };
@@ -206,6 +209,7 @@ Rules for creating and using arrays
   }
   ```
 * Use ``` Array.prototype.slice ``` to convert an array-like object to an array
+
   ```javascript
   function f() {
     var args = Array.prototype.slice.call(arguments);
@@ -220,6 +224,7 @@ Rules for declaring and invoking functions
 
 * Always add a space after the ``` function ``` keyword
 * Never declare a function in a non-function block (if, while, etc)
+
   ```javascript
   // Don't do this
   if (somethingTrue) {
