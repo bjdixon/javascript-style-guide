@@ -55,18 +55,18 @@ Rules for naming and how to declare variables
 * Use UPPERCASE for constants
 * Underscores don't belong in variable names except for ``` _this ```
 * Use 1 ``` var ``` keyword per scope and 1 declaration per line
-  ```
+  ```javascript
   var foo = 'bar',
     num = 1;
   ```
 * Unassigned variables follow assignments
-  ```
+  ```javascript
   var foo = 'bar',
     num = '1',
     undef;
   ```
 * Hoist your variable declarations manually
-  ```
+  ```javascript
   // Do this
   function good() {
     var bar;
@@ -88,7 +88,7 @@ Rules for creating and using objects
 ### Object Creation
 
 * Use object literal syntax for creating objects not the constructor
-  ```
+  ```javascript
   // Do this
   var item = {};
 
@@ -96,7 +96,7 @@ Rules for creating and using objects
   var item = new Object();
   ```
 * Use one line per property when creating objects
-  ```
+  ```javascript
   // Do this
   var item = {
     propertyOne: 'value',
@@ -107,7 +107,7 @@ Rules for creating and using objects
   var item = { propertyOne: 'value', propertyTwo: true };
   ```
 * Objects that are created with only one property may be created on one line
-  ```
+  ```javascript
   // This is okay
   var item = { propertyOne: 'value' };
   ```
@@ -115,7 +115,7 @@ Rules for creating and using objects
 ### Keys
 
 * Don't use reserved keywords as keys
-  ```
+  ```javascript
   // Don't do this
   var item = {
     default: { foo: 'value' },
@@ -129,7 +129,7 @@ Rules for creating and using objects
   };
   ```
 * Use readable synonyms in place of reserved words, not alternative spellings of reserved words
-  ```
+  ```javascript
   // Don't do this
   var item = { class: 'category' };
 
@@ -143,7 +143,7 @@ Rules for creating and using objects
 ### Accessing Properties
 
 * Use dot notation when accessing properties
-  ```
+  ```javascript
   var item = {
     foo: 'bar',
     hidden: true
@@ -156,7 +156,7 @@ Rules for creating and using objects
   var isHidden = item.['hidden'];
   ```
 * Use subscript notation only when accessing properties using a variable 
-  ```
+  ```javascript
   var item = {
     foo: 'bar',
     hidden: true
@@ -175,7 +175,7 @@ Rules for creating and using objects
 Rules for creating and using arrays
 
 * Use array literal syntax for creating arrays not the constructor
-  ```
+  ```javascript
   // Do this
   var collection = [];
 
@@ -183,7 +183,7 @@ Rules for creating and using arrays
   var collection = new Array();
   ```
 * Use ``` array.push ``` to add items to an array instead of direct assignment
-  ```
+  ```javascript
   var collection = [];
 
   // Do this
@@ -193,7 +193,7 @@ Rules for creating and using arrays
   collection[collection.length] = 'value';
   ```
 * Use ``` array.slice ``` to copy an array
-  ```
+  ```javascript
   var copyOfCollection = [],
     index;
 
@@ -206,7 +206,7 @@ Rules for creating and using arrays
   }
   ```
 * Use ``` Array.prototype.slice ``` to convert an array-like object to an array
-  ```
+  ```javascript
   function f() {
     var args = Array.prototype.slice.call(arguments);
   }
@@ -220,7 +220,7 @@ Rules for declaring and invoking functions
 
 * Always add a space after the ``` function ``` keyword
 * Never declare a function in a non-function block (if, while, etc)
-  ```
+  ```javascript
   // Don't do this
   if (somethingTrue) {
     function logTrue() {
@@ -233,7 +233,7 @@ Rules for declaring and invoking functions
 ### Function Expressions
 
 * Hoist declarations with other ``` var ``` declarations, but don't assign until after the other variables are declared
-  ```
+  ```javascript
   var foo = 'bar',
     baz = true,
     multiply;
@@ -244,7 +244,7 @@ Rules for declaring and invoking functions
   ```
 * Assigning the function to the variable at the site of first usage is prefered
 * Providing an identifier is prefered as it allows for recursion and better stack traces
-  ```
+  ```javascript
   // Prefer this
   var square = function square(number) {
     return number * number;
@@ -256,7 +256,7 @@ Rules for declaring and invoking functions
   };
   ```
 * Never declare a function in a non-function block. Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently
-  ```
+  ```javascript
   // Don't do this
   if (somethingTrue) {
     function goTrue() {
@@ -276,7 +276,7 @@ Rules for declaring and invoking functions
 ### Constructor Functions
 
 * Provide padding inside the braces when providing a configuration object during instantiation
-  ```
+  ```javascript
   // Declaration
   function FooBar(options) {
     this.options = options;
@@ -295,7 +295,7 @@ Rules for declaring and invoking functions
 ### Parameters and Arguments
 
 * Never add padding inside parentheses
-  ```
+  ```javascript
   // Do this
   function foo(paramOne, paramTwo) {
     // statements
@@ -324,7 +324,7 @@ Rules for declaring and invoking functions
 * Avoid deep nesting of ``` if ``` statements
 * Always return a function's value as early as possible
 
-```
+```javascript
 // This is fine
 function isPercentage(val) {
   if (val < 0) {
@@ -353,7 +353,7 @@ function isPercentage(val) {
 ### Closures
 
 * Don't use closures if you can use an inner function without a closure. They're slower and more prone to memory leaks
-  ```
+  ```javascript
   function setupAlertTimeout() {
     var msg = 'Message to alert';
     window.setTimeout(function alertMsg() { 
@@ -381,7 +381,7 @@ function isPercentage(val) {
   }
   ```
 * Name your closures for better stack traces
-  ```
+  ```javascript
   // Prefer this
   req.on('end', function onEnd() {
     console.log('good');
@@ -393,7 +393,7 @@ function isPercentage(val) {
   });
   ```
 * Never nest closures. It's messy
-  ```
+  ```javascript
   // Do this
   setTimeout(function connect() {
     client.connect(afterConnect);
@@ -429,7 +429,7 @@ Conditional statements evaluate their expression using coercion and always follo
 * Strings evaluate to false if an empty string, otherwise true
 * Arrays are objects and so evaluate as true
 
-```
+```javascript
 if ([0]) {
   // Arrays are objects and so evaluate as true
 }
@@ -439,7 +439,7 @@ if ([0]) {
 
 **Strings**
 
-```
+```javascript
 // Do this when checking a string isn't empty
 if (name) {
   // statements
@@ -463,7 +463,7 @@ if (name === '') {
 
 **Collections**
 
-```
+```javascript
 // Do this when evaluating that an array has length
 if (collection.length) {
   // statements
@@ -487,7 +487,7 @@ if (collection.length === 0) {
 
 **References**
 
-```
+```javascript
 // Do this when evaluating if a reference is false
 if (!foo) {
   // statements
