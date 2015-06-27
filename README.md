@@ -87,147 +87,130 @@ Rules for creating and using objects
 
 ### Object Creation
 
-Use object literal syntax for creating objects not the constructor
+* Use object literal syntax for creating objects not the constructor
+  ```
+  // Do this
+  var item = {};
 
-```
-// Do this
-var item = {};
+  // Don't do this
+  var item = new Object();
+  ```
+* Use one line per property when creating objects
+  ```
+  // Do this
+  var item = {
+    propertyOne: 'value',
+    propertyTwo: true
+  };
 
-// Don't do this
-var item = new Object();
-```
-
-Use one line per property when creating objects
-
-```
-// Do this
-var item = {
-  propertyOne: 'value',
-  propertyTwo: true
-};
-
-// Don't do this
-var item = { propertyOne: 'value', propertyTwo: true };
-```
-
-Objects that are created with only one property may be created on one line
-
-```
-// This is okay
-var item = { propertyOne: 'value' };
-```
+  // Don't do this
+  var item = { propertyOne: 'value', propertyTwo: true };
+  ```
+* Objects that are created with only one property may be created on one line
+  ```
+  // This is okay
+  var item = { propertyOne: 'value' };
+  ```
 
 ### Keys
 
-Don't use reserved keywords as keys
+* Don't use reserved keywords as keys
+  ```
+  // Don't do this
+  var item = {
+    default: { foo: 'value' },
+    private: true
+  };
 
-```
-// Don't do this
-var item = {
-  default: { foo: 'value' },
-  private: true
-};
+  // Do this
+  var item = {
+    auto: { foo: 'value' },
+    hidden: true
+  };
+  ```
+* Use readable synonyms in place of reserved words, not alternative spellings of reserved words
+  ```
+  // Don't do this
+  var item = { class: 'category' };
 
-// Do this
-var item = {
-  auto: { foo: 'value' },
-  hidden: true
-};
-```
+  // Don't do this either
+  var item = { klass: 'category' };
 
-Use readable synonyms in place of reserved words, not alternative spellings of reserved words
-
-```
-// Don't do this
-var item = { class: 'category' };
-
-// Don't do this either
-var item = { klass: 'category' };
-
-// Do this instead
-var item = { type: 'category' };
-```
+  // Do this instead
+  var item = { type: 'category' };
+  ```
 
 ### Accessing Properties
 
-Use dot notation when accessing properties
+* Use dot notation when accessing properties
+  ```
+  var item = {
+    foo: 'bar',
+    hidden: true
+  };
 
-```
-var item = {
-  foo: 'bar',
-  hidden: true
-};
+  // Do this
+  var foo = item.foo;
 
-// Do this
-var foo = item.foo;
+  // Don't do this
+  var isHidden = item.['hidden'];
+  ```
+* Use subscript notation only when accessing properties using a variable 
+  ```
+  var item = {
+    foo: 'bar',
+    hidden: true
+  };
 
-// Don't do this
-var isHidden = item.['hidden'];
-```
+  function getProperty(property) {
+    return item[property];
+  }
 
-Use subscript notation only when accessing properties using a variable 
-```
-var item = {
-  foo: 'bar',
-  hidden: true
-};
-
-function getProperty(property) {
-  return item[property];
-}
-
-var foo = getProperty('foo'),
-  isHidden = getProperty('hidden');
-```
+  var foo = getProperty('foo'),
+    isHidden = getProperty('hidden');
+  ```
 
 ## Arrays
 
 Rules for creating and using arrays
 
-Use array literal syntax for creating arrays not the constructor
+* Use array literal syntax for creating arrays not the constructor
+  ```
+  // Do this
+  var collection = [];
 
-```
-// Do this
-var collection = [];
+  // Don't do this
+  var collection = new Array();
+  ```
+* Use ``` array.push ``` to add items to an array instead of direct assignment
+  ```
+  var collection = [];
 
-// Don't do this
-var collection = new Array();
-```
+  // Do this
+  collection.push('value');
 
-Use ``` array.push ``` to add items to an array instead of direct assignment
+  // Don't do this
+  collection[collection.length] = 'value';
+  ```
+* Use ``` array.slice ``` to copy an array
+  ```
+  var copyOfCollection = [],
+    index;
 
-```
-var collection = [];
+  // Do this
+  copyOfCollection = collection.slice();
 
-// Do this
-collection.push('value');
-
-// Don't do this
-collection[collection.length] = 'value';
-```
-
-Use ``` array.slice ``` to copy an array
-
-```
-var copyOfCollection = [],
-  index;
-
-// Do this
-copyOfCollection = collection.slice();
-
-// Don't do this
-for (index = 0; index < collection.length; index += 1) {
-  copyOfCollection[index] = collection[index];
-}
-```
-
-Use ``` Array.prototype.slice ``` to convert an array-like object to an array
-
-```
-function f() {
-  var args = Array.prototype.slice.call(arguments);
-}
-```
+  // Don't do this
+  for (index = 0; index < collection.length; index += 1) {
+    copyOfCollection[index] = collection[index];
+  }
+  ```
+* Use ``` Array.prototype.slice ``` to convert an array-like object to an array
+  ```
+  function f() {
+    var args = Array.prototype.slice.call(arguments);
+  }
+  ```
 
 ## Functions
 
